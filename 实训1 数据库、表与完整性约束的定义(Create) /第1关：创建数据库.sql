@@ -5,7 +5,6 @@
 
 -- 你也可以选择在以下空白行填写完成目标任务的SQL语句：
 -- 创建2022年北京冬奥会信息系统数据库
-create database beijing2022;
-
+create database if not exists beijing2022;
 
 -- end
