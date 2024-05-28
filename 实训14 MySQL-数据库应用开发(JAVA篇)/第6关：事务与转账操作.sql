@@ -21,8 +21,42 @@ public class Transfer {
                              String sourceCard,
                              String destCard, 
                              double amount){
+        try 
+        {
+            String sql = "select * from bank_card where b_number = ?";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setString(1, sourceCard);
+            ResultSet res = ps.executeQuery();
 
+            if (!res.next() || res.getString("b_type").equals("信用卡") || res.getDouble("b_balance") < amount)
+                return false;
+            ps = connection.prepareStatement(sql);
+            ps.setString(1, destCard);
+            res = ps.executeQuery();
+            if (!res.next())
+                return false;
 
+            double rcv_amount;
+            if(res.getString("b_type").equals("信用卡"))
+                rcv_amount =  -amount;
+            else
+                rcv_amount = amount;
+
+            sql = "update bank_card set b_balance = b_balance + ? where b_number = ?";
+            ps = connection.prepareStatement(sql);
+            ps.setDouble(1, -amount);
+            ps.setString(2, sourceCard);
+            ps.executeUpdate();
+            ps = connection.prepareStatement(sql);
+            ps.setDouble(1, rcv_amount);
+            ps.setString(2, destCard);
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     // 不要修改main() 
