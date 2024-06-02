@@ -1,4 +1,0 @@
-USE TestDb1;
-
-#请在以下空白处添加恰当的语句，将表名your_table更改为your_table:
-alter table your_table rename my_table;
