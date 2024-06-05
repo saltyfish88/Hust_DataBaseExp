@@ -42,7 +42,14 @@ latest_update:2024.5.9📝
 
 16. 实训16 索引管理(Indexing)
 ### 2️⃣实验报告
+1. 相关图片
+
+2. 实验报告
 ### 3️⃣相关文件
 1. 实验任务书
 
 2. 实验报告模板
+
+### 4️⃣难题题解
+https://flowus.cn/saltyfish/share/91252db9-b010-418d-8176-c9243c96bec9?code=9TBS7P
+【FlowUs 息流】数据库系统原理实验题解
